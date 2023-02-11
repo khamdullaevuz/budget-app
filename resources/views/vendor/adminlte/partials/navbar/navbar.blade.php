@@ -22,7 +22,7 @@
         {{-- Configured right links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
 
-        <span class="badge badge-pill @if(Auth::user()->balance >= 1000000) badge-success @elseif(Auth::user()->balance < 1000000 and Auth::user()->balance >= 100000) badge-warning @else badge-danger @endif" style="padding-top: 13px">{{Auth::user()->formatted_balance}}</span>
+        <i class="fa fa-fw fa-dollar-sign" style="padding-top: 13px"></i><span class="badge badge-pill @if(Auth::user()->balance >= 1000000) badge-success @elseif(Auth::user()->balance < 1000000 and Auth::user()->balance >= 100000) badge-warning @else badge-danger @endif" style="padding-top: 13px">{{Auth::user()->formatted_balance}}</span>
 
         {{-- User menu link --}}
         @if(Auth::user())
