@@ -321,6 +321,7 @@ return [
             'text'        => 'Bo\'limlar',
             'url'         => 'categories',
             'icon'        => 'fas fa-fw fa-share',
+            'active'      => ['categories/*'],
         ],
         [
             'text'        => 'Rejalar',
@@ -396,7 +397,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -445,6 +446,21 @@ return [
                 ],
             ],
         ],
+        'Toastr' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '/vendor/toastr/toastr.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '/vendor/toastr/toastr.min.js'
+                ]
+            ]
+        ]
     ],
 
     /*

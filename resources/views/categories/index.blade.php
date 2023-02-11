@@ -9,7 +9,7 @@
         </div>
         <div class="p-1">
             <div class="float-right">
-                <a type="button" class="btn btn-success">Qo'shish</a>
+                <a type="button" href="{{route('categories.create')}}" class="btn btn-success">Qo'shish</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,13 @@
                                     </th>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
-                                    <td><a href="" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                                    <td><a href="{{ route('categories.show', $category->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
+                                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fas fa-trash"></i></button>
+                                        </form></td>
                                 </tr>
                             @empty
                                 <tr>
@@ -51,8 +57,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <br>
-                    {{ $categories->appends(request()->input())->onEachSide(1)->links() }}
+                    {{ $categories->appends(request()->input())->links() }}
                 </div>
             </div>
         </div>
