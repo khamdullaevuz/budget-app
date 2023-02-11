@@ -259,7 +259,7 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => 'profile',
 
     /*
     |--------------------------------------------------------------------------
@@ -308,12 +308,12 @@ return [
         ],
         [
             'text' => 'Kirim',
-            'url' => 'income',
+            'url' => 'transactions/income',
             'icon' => 'fa fa-fw fa-plus',
         ],
         [
             'text' => 'Chiqim',
-            'url' => 'cost',
+            'url' => 'transactions/expense',
             'icon' => 'fa fa-fw fa-minus',
         ],
         ['header' => 'Qo\'shimcha'],

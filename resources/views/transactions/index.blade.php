@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Bosh sahifa')
+@section('title', 'Tranzaksiyalar')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Bosh sahifa</h1>
+    <h1 class="m-0 text-dark">Tranzaksiyalar</h1>
 @stop
 
 @section('content')
