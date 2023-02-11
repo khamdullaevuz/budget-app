@@ -74,11 +74,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param CategoryUpdateRequest $request
+     * @param CategoryStoreRequest $request
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(CategoryUpdateRequest $request, $id)
+    public function update(CategoryStoreRequest $request, $id)
     {
         $this->service->update($request->validated(), $id);
 

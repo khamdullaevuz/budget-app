@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function balance(): string
+    {
+        return number_format($this->balance, 2, '.', ' ') . ' UZS';
+    }
 }

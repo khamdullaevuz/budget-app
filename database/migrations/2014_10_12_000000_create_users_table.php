@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('username');
             $table->string('password');
-            $table->decimal('amount')->default(0);
+            $table->decimal('balance', 15)->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -16,14 +16,14 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->enum('type', ['income', 'expense']);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->enum('payment_method', ['card', 'cash']);
-            $table->decimal('amount');
+            $table->decimal('amount',15);
             $table->timestamps();
         });
     }
