@@ -47,7 +47,7 @@
                                     <td>{{ $transaction->name }}</td>
                                     <td>{{ $transaction->description }}</td>
                                     <td>{{ $transaction->category->name }}</td>
-                                    <td>{{ $transaction->amount }}</td>
+                                    <td>{{ $transaction->formatted_amount }}</td>
                                     <td>{{ $transaction->created_at }}</td>
                                     <td>@if($transaction->payment_method == "cash")<span class="badge badge-pill badge-dark">Naqd</span>@else<span class="badge badge-pill badge-dark">Karta</span>@endif</td>
                                     <td>@if($transaction->type == "income")<span class="badge badge-pill badge-success">Kirim</span>@else<span class="badge badge-pill badge-danger">Chiqim</span>@endif</td>
@@ -72,4 +72,27 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('js')
+    <script type="text/javascript">
+        $('.show_confirm').click(function(e) {
+            e.preventDefault();
+            let $form = $(this).closest('form');
+            Swal.fire({
+                title: 'Bunga aminmisiz?',
+                text: "Ushbu amalni ortga qaytarib bo'lmaydi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ha, o\'chiraman!',
+                cancelButtonText: 'Bekor qilish'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $form.submit();
+                }
+            })
+        });
+    </script>
 @stop

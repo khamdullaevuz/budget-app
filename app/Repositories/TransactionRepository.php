@@ -10,7 +10,7 @@ class TransactionRepository
 
     public function getAll()
     {
-        return Transaction::paginate(10);
+        return Transaction::orderByDesc('created_at')->paginate(10);
     }
 
     public function getCategoriesAll()
@@ -22,5 +22,15 @@ class TransactionRepository
     {
         $data['user_id'] = auth()->user()->id;
         return Transaction::create($data);
+    }
+
+    public function getById(int $id)
+    {
+        return Transaction::find($id);
+    }
+
+    public function delete(int $id)
+    {
+        return Transaction::destroy($id);
     }
 }

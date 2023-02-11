@@ -84,10 +84,12 @@ class TransactionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
-        //
+        $this->service->destroy($id);
+
+        return redirect()->route('transactions.index')->with('success', 'Tranzaksiya muvaffaqiyatli o\'chirildi');
     }
 }

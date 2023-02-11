@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Events\TransactionCreated;
+use App\Events\TransactionDeleted;
 use App\Models\Transaction;
 use App\Repositories\TransactionRepository;
 
@@ -29,5 +30,12 @@ class TransactionService
     {
         $transaction = $this->repository->create($validated);
         TransactionCreated::dispatch($transaction);
+    }
+
+    public function destroy(int $id)
+    {
+        $transaction = $this->repository->getById($id);
+        $this->repository->delete($id);
+        TransactionDeleted::dispatch($transaction);
     }
 }

@@ -22,9 +22,12 @@ Auth::routes([
     'reset' => false,
     'verify' => false
 ]);
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resources([
-    'categories' => CategoryController::class,
-    'transactions' => TransactionController::class
-]);
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::resources([
+        'categories' => CategoryController::class,
+        'transactions' => TransactionController::class
+    ]);
+});

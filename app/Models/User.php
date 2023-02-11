@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Number;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,8 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function balance(): string
+    protected $appends = [
+        'formatted_balance'
+    ];
+
+    public function getFormattedBalanceAttribute(): string
     {
-        return number_format($this->balance, 2, '.', ' ') . ' UZS';
+        return Number::format($this->balance);
     }
 }
