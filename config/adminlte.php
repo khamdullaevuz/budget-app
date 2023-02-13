@@ -305,7 +305,7 @@ return [
             'text' => 'Tranzaksiyalar',
             'url'  => 'transactions',
             'icon' => 'fas fa-fw fa-exchange-alt',
-            'active' => ['transactions'],
+            'active' => ['transactions/*'],
         ],
         ['header' => 'Qo\'shimcha'],
         [
@@ -322,7 +322,7 @@ return [
         ],
         [
             'text' => 'Parolni alishtirish',
-            'url'  => 'password',
+            'url'  => 'profile/password',
             'icon' => 'fas fa-fw fa-lock',
         ]
     ],
@@ -388,12 +388,12 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'location' => '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'location' => '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
                 ],
             ],
         ],

@@ -51,9 +51,7 @@
                                     <td>{{ $transaction->created_at }}</td>
                                     <td>@if($transaction->payment_method == "cash")<span class="badge badge-pill badge-dark">Naqd</span>@else<span class="badge badge-pill badge-dark">Karta</span>@endif</td>
                                     <td>@if($transaction->type == "income")<span class="badge badge-pill badge-success">Kirim</span>@else<span class="badge badge-pill badge-danger">Chiqim</span>@endif</td>
-                                    <td><a href="{{ route('transactions.show', $transaction->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
-                                        <a href="{{ route('transactions.edit', $transaction->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
-                                        <form action="{{ route('transactions.destroy', $transaction->id) }}" method="POST" class="d-inline">
+                                    <td><form action="{{ route('transactions.destroy', $transaction->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fas fa-trash"></i></button>

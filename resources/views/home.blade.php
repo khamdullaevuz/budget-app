@@ -17,7 +17,7 @@
                 <div class="icon">
                     <i class="fas fa-fw fa-exchange-alt"></i>
                 </div>
-                <a href="" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('transactions.index')}}" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                 <div class="icon">
                     <i class="fa fa-fw fa-plus"></i>
                 </div>
-                <a href="" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('transactions.index')}}" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-12">
@@ -44,7 +44,7 @@
                 <div class="icon">
                     <i class="fa fa-fw fa-minus"></i>
                 </div>
-                <a href="" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('transactions.index')}}" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <a href="" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('transactions.index')}}" class="small-box-footer">Batafsil <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
