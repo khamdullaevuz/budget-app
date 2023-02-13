@@ -30,6 +30,7 @@
                         <div class="col-md-6">
                             <label for="type">Turi</label>
                             <select name="type" class="form-control" id="type" aria-describedby="typeHelp">
+                                <option value="">Tanlang</option>
                                 <option value="income" {{old('type') ?? $transaction->type == 'income' ? 'selected' : ''}}>Kirim</option>
                                 <option value="expense" {{old('type') ?? $transaction->type == 'expense' ? 'selected' : ''}}>Chiqim</option>
                             </select>
@@ -39,11 +40,8 @@
                         </div>
                         <div class="col-md-6">
                             <label for="category_id">Bo'lim</label>
-                            <select name="category_id" class="form-control" id="category_id" aria-describedby="categoryIdHelp">
+                            <select name="category_id" class="form-control" id="category_id" aria-describedby="categoryIdHelp" disabled>
                                 <option value="">Tanlanmagan</option>
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}" {{old('category_id') ?? $category->category_id == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
-                                @endforeach
                             </select>
                             @error('category_id')
                             <small id="categoryIdHelp" class="form-text text-muted">{{$message}}</small>
@@ -66,4 +64,27 @@
             </form>
         </div>
     </div>
+@stop
+
+@section('js')
+    <script>
+        $("#type").change(function(){
+            let type = $(this).val();
+            $.ajax({
+                url: "{{route('category.type', ':type')}}".replace(':type', type),
+                type: "GET",
+                dataType: "json",
+                success: function(data){
+                    data = data.data;
+                    let category = $("#category_id");
+                    category.empty();
+                    category.append('<option value="">Tanlang</option>');
+                    $.each(data, function(key, value){
+                        category.append('<option value="'+value.id+'">'+value.name+'</option>');
+                    });
+                    category.removeAttr('disabled');
+                }
+            });
+        });
+    </script>
 @stop

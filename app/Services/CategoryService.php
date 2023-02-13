@@ -37,4 +37,9 @@ class CategoryService
     {
         return $this->repository->update($validated, $id);
     }
+
+    public function getCategoriesByType($type)
+    {
+        return $this->repository->categorySearch($type);
+    }
 }

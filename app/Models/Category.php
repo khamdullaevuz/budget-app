@@ -12,6 +12,12 @@ class Category extends Model
     protected $fillable = [
         'name',
         'description',
+        'type',
         'user_id'
     ];
+
+    public function transactions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

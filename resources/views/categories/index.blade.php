@@ -30,6 +30,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nomi</th>
                                 <th scope="col">Qisqacha tarif</th>
+                                <th scope="col">Turi</th>
                                 <th scope="col">Amallar</th>
                             </tr>
                             </thead>
@@ -41,6 +42,7 @@
                                     </th>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
+                                    <td>@if($category->type == "income")<span class="badge badge-pill badge-success">Kirim</span>@else<span class="badge badge-pill badge-danger">Chiqim</span>@endif</td>
                                     <td><a href="{{ route('categories.show', $category->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
                                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline">
@@ -51,7 +53,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">Hech narsa topilmadi</td>
+                                    <td colspan="5" class="text-center">Hech narsa topilmadi</td>
                                 </tr>
                             @endforelse
                             </tbody>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryStoreRequest;
-use App\Http\Requests\CategoryUpdateRequest;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
@@ -96,5 +96,10 @@ class CategoryController extends Controller
         $this->service->destroy($id);
 
         return redirect()->route('categories.index')->with('success', 'Bo\'lim muvaffaqiyatli o\'chirildi');
+    }
+
+    public function getCategoriesByType($type): \Illuminate\Http\JsonResponse
+    {
+        return CategoryResource::collection($this->service->getCategoriesByType($type))->response();
     }
 }

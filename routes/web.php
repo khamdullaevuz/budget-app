@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth'], function(){
         Route::delete('/{id}/destroy', 'destroy')->name('destroy');
     });
 
+
+    Route::get('category/{type}/type', [CategoryController::class, 'getCategoriesByType'])->name('category.type');
+
     /*Route::controller(ProfileController::class)->name('profile')->as('profile')->group(function(){
        Route::get('/', 'index');
        Route::post('/update', 'update');

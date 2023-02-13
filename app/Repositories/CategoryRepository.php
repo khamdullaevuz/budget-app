@@ -34,4 +34,9 @@ class CategoryRepository
         $category->update($validated);
         return $category;
     }
+
+    public function categorySearch($type)
+    {
+        return Category::where('type', $type)->get();
+    }
 }
