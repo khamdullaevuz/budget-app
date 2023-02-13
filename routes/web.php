@@ -18,6 +18,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::redirect('/', '/home');
+
 Auth::routes([
     'register' => false,
     'reset' => false,
@@ -35,10 +36,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::delete('/{id}/destroy', 'destroy')->name('destroy');
     });
 
-    Route::controller(ProfileController::class)->name('profile')->as('profile')->group(function(){
+    /*Route::controller(ProfileController::class)->name('profile')->as('profile')->group(function(){
        Route::get('/', 'index');
        Route::post('/update', 'update');
        Route::get('/password', 'password');
        Route::post('/password', 'passwordChange');
-    });
+    });*/
 });
