@@ -52,6 +52,7 @@
                 <div class="form-group">
                     <label for="payment_method">To'lov turi</label>
                     <select name="payment_method" class="form-control" id="payment_method" aria-describedby="paymentMethodHelp">
+                        <option value="">Tanlang</option>
                         <option value="cash" {{old('payment_method') ?? $transaction->payment_method == 'cash' ? 'selected' : ''}}>Naqd</option>
                         <option value="card" {{old('payment_method') ?? $transaction->payment_method == 'card' ? 'selected' : ''}}>Karta</option>
                     </select>
