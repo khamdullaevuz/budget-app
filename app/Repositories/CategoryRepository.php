@@ -9,7 +9,7 @@ class CategoryRepository
 
     public function getAll()
     {
-        return Category::paginate(10);
+        return Category::orderByDesc('created_at')->paginate(10);
     }
 
     public function create($data)
@@ -37,6 +37,6 @@ class CategoryRepository
 
     public function categorySearch($type)
     {
-        return Category::where('type', $type)->get();
+        return Category::where('type', $type)->orderByDesc('created_at')->get();
     }
 }
