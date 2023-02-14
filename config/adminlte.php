@@ -293,7 +293,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'izlash...g',
         ],
         [
           'text' => 'Bosh sahifa',
