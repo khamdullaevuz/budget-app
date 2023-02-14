@@ -66,9 +66,9 @@
     <div class="card">
         <div class="card-body">
             <h4><i class="fa fa-fw fa-dollar-sign"></i>Balans eslatmalari:</h4>
-            <span class="badge badge-pill badge-success">{{Number::format(1000000)}}</span> Yaxshi<br>
-            <span class="badge badge-pill badge-warning">{{Number::format(100000)}}</span> O'rta<br>
-            <span class="badge badge-pill badge-danger">{{Number::format(50000)}}</span> Yomon<br>
+            <span class="badge badge-pill badge-success">{{Number::format(1000000)}}+</span> Yaxshi<br>
+            <span class="badge badge-pill badge-warning">{{Number::format(500000)}}+</span> O'rta<br>
+            <span class="badge badge-pill badge-danger">{{Number::format(500000)}}-</span> Yomon<br>
         </div>
     </div>
 @stop
