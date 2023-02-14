@@ -30,11 +30,22 @@ class RefundAmount
         $amount = $transaction->amount;
         $type = $transaction->type;
         $user = $transaction->user;
+        $payment_method = $transaction->payment_method;
 
-        if ($type === 'income') {
-            $user->balance -= $amount;
-        } else {
-            $user->balance += $amount;
+        if ($payment_method == 'cash') {
+            if ($type == 'income') {
+                $user->cash_balance -= $amount;
+            } else {
+                $user->cash_balance += $amount;
+            }
+            $user->save();
+        }else{
+            if ($type == 'income') {
+                $user->card_balance -= $amount;
+            } else {
+                $user->card_balance += $amount;
+            }
+            $user->save();
         }
 
         $user->save();

@@ -6,7 +6,7 @@
     @enderror
 </div>
 <div class="form-group">
-    <label for="description">Tasnif*</label>
+    <label for="description">Tasnif</label>
     <textarea name="description" class="form-control" id="description" rows="3" aria-describedby="descriptionHelp">{{old('name') ?? $category->name}}</textarea>
     @error('description')
     <small id="descriptionHelp" class="form-text text-muted">{{$message}}</small>

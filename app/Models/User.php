@@ -44,8 +44,13 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'formatted_balance'
+        'balance', 'formatted_balance'
     ];
+
+    public function getBalanceAttribute()
+    {
+        return $this->card_balance + $this->cash_balance;
+    }
 
     public function getFormattedBalanceAttribute(): string
     {
