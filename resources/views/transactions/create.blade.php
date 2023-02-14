@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group">
                     <label for="amount">Summa</label>
-                    <input type="text" name="amount" class="form-control" id="amount" value="{{old('amount') ?? $transaction->amount}}" aria-describedby="amountHelp">
+                    <input type="text" inputmode="decimal" name="amount" class="form-control" id="amount" value="{{old('amount') ?? $transaction->amount}}" aria-describedby="amountHelp">
                 </div>
                 <button type="submit" class="btn btn-primary">Yaratish</button>
             </form>
