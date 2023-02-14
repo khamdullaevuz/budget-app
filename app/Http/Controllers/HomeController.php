@@ -20,6 +20,8 @@ class HomeController extends Controller
             ->with('transactions', Transaction::count())
             ->with('income', Number::format(Transaction::where('type', 'income')->sum('amount')))
             ->with('expense', Number::format(Transaction::where('type', 'expense')->sum('amount')))
-            ->with('balance', Number::format(Auth::user()->balance));
+            ->with('balance', Number::format(Auth::user()->balance))
+            ->with('cash_balance', Number::format(Auth::user()->cash_balance))
+            ->with('card_balance', Number::format(Auth::user()->card_balance));
     }
 }
