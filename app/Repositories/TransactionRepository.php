@@ -21,6 +21,7 @@ class TransactionRepository
     public function create($data)
     {
         $data['user_id'] = auth()->user()->id;
+        $data['amount'] = preg_replace('/[^0-9.]/', '', $data['amount']);
         return Transaction::create($data);
     }
 

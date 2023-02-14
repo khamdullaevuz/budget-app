@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group">
                     <label for="amount">Summa</label>
-                    <input type="number" step="any" name="amount" class="form-control" id="amount" value="{{old('amount') ?? $transaction->amount}}" aria-describedby="amountHelp">
+                    <input type="text" name="amount" class="form-control" id="amount" value="{{old('amount') ?? $transaction->amount}}" aria-describedby="amountHelp">
                 </div>
                 <button type="submit" class="btn btn-primary">Yaratish</button>
             </form>
@@ -68,6 +68,22 @@
 @stop
 
 @section('js')
+    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#amount').inputmask({
+                alias: 'numeric',
+                groupSeparator: ' ',
+                autoGroup: true,
+                digits: 2,
+                digitsOptional: false,
+                prefix: '',
+                placeholder: '0',
+                rightAlign: false,
+                oncleared: function () { self.Value(''); }
+            });
+        });
+    </script>
     <script>
         $("#type").change(function(){
             let type = $(this).val();
