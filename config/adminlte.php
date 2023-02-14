@@ -259,7 +259,7 @@ return [
 //    'register_url' => 'register',
 //    'password_reset_url' => 'password/reset',
 //    'password_email_url' => 'password/email',
-    'profile_url' => 'profile',
+//    'profile_url' => 'profile',
 
     /*
     |--------------------------------------------------------------------------
@@ -313,17 +313,6 @@ return [
             'url'         => 'categories',
             'icon'        => 'fas fa-fw fa-share',
             'active'      => ['categories/*'],
-        ],
-        ['header' => 'Akkaunt sozlamalari'],
-        [
-            'text' => 'Profil',
-            'url'  => 'profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Parolni alishtirish',
-            'url'  => 'profile/password',
-            'icon' => 'fas fa-fw fa-lock',
         ]
     ],
 
