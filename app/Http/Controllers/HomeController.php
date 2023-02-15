@@ -24,8 +24,8 @@ class HomeController extends Controller
         $cash_balance = Number::format(Auth::user()->cash_balance);
         $card_balance = Number::format(Auth::user()->card_balance);
 
-        $income_info = Category::where('type', 'income')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->get('transactions_sum_amount');
-        $expense_info = Category::where('type', 'expense')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->get('transactions_sum_amount');
+        $income_info = Category::where('type', 'income')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->having('transactions_sum_amount','!=', 0)->get('transactions_sum_amount');
+        $expense_info = Category::where('type', 'expense')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->having('transactions_sum_amount','!=', 0)->get('transactions_sum_amount');
 
         return view('home', compact('transactions', 'income', 'expense', 'balance', 'cash_balance', 'card_balance', 'income_info', 'expense_info'));
     }
