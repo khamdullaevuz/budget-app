@@ -65,6 +65,43 @@
 
     <div class="row">
         <div class="col-lg-6 col-12">
+            <div class="card" @if(!$expense_info and $income_info) style="height: 95%" @endif>
+                <div class="card-header border-0">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title">Kirimlar</h3>
+                        <a href="{{route('transactions.index')}}">Barchasini ko'rish</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if($income_info)
+                        <canvas id="income_info" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    @else
+                        <h4>Hech narsa topilmadi</h4>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card" @if(!$income_info and $expense_info) style="height: 95%" @endif>
+                <div class="card-header border-0">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title">Chiqimlar</h3>
+                        <a href="{{route('transactions.index')}}">Barchasini ko'rish</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if($expense_info)
+                        <canvas id="expense_info" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    @else
+                        <h4>Hech narsa topilmadi</h4>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-12">
             <div class="card">
                 <div class="card-body">
                     <h4><i class="fa fa-fw fa-dollar-sign"></i>Balans eslatmalari:</h4>
@@ -85,4 +122,74 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('js')
+    <script>
+        $(function () {
+            @if($income_info)
+            var income_info = document.getElementById('income_info').getContext('2d');
+            new Chart(income_info, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        @foreach($income_info as $info)
+                            '{{$info->name}}',
+                        @endforeach
+                    ],
+                    datasets: [{
+                        label: 'Kirimlar',
+                        data: [
+                            @foreach($income_info as $info)
+                                '{{$info->transactions_sum_amount}}',
+                            @endforeach
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            @endif
+
+            @if($expense_info)
+            var expense_info = document.getElementById('expense_info').getContext('2d');
+            new Chart(expense_info, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        @foreach($expense_info as $info)
+                            '{{$info->name}}',
+                        @endforeach
+                    ],
+                    datasets: [{
+                        label: 'Chiqimlar',
+                        data: [
+                            @foreach($expense_info as $info)
+                                '{{$info->transactions_sum_amount}}',
+                            @endforeach
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            @endif
+        });
+    </script>
 @stop

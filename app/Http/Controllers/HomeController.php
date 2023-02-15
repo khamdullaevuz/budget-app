@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Number;
+use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +17,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home')
-            ->with('transactions', Transaction::count())
-            ->with('income', Number::format(Transaction::where('type', 'income')->sum('amount')))
-            ->with('expense', Number::format(Transaction::where('type', 'expense')->sum('amount')))
-            ->with('balance', Number::format(Auth::user()->balance))
-            ->with('cash_balance', Number::format(Auth::user()->cash_balance))
-            ->with('card_balance', Number::format(Auth::user()->card_balance));
+        $transactions = Transaction::count();
+        $income = Number::format(Transaction::where('type', 'income')->sum('amount'));
+        $expense = Number::format(Transaction::where('type', 'expense')->sum('amount'));
+        $balance = Number::format(Auth::user()->balance);
+        $cash_balance = Number::format(Auth::user()->cash_balance);
+        $card_balance = Number::format(Auth::user()->card_balance);
+
+        $income_info = Category::where('type', 'income')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->get('transactions_sum_amount');
+        $expense_info = Category::where('type', 'expense')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->get('transactions_sum_amount');
+
+        return view('home', compact('transactions', 'income', 'expense', 'balance', 'cash_balance', 'card_balance', 'income_info', 'expense_info'));
     }
 }
