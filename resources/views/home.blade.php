@@ -88,7 +88,7 @@
 
     <div class="row">
         <div class="col-lg-6 col-12">
-            <div class="card" @if(!$expense_info and $income_info) style="height: 95%" @endif>
+            <div class="card" @if($expense_info and !$income_info) style="height: 95%" @endif>
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">Kirimlar</h3>
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-12">
-            <div class="card" @if(!$income_info and $expense_info) style="height: 95%" @endif>
+            <div class="card" @if($income_info and !$expense_info) style="height: 95%" @endif>
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">Chiqimlar</h3>
