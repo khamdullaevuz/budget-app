@@ -73,6 +73,18 @@ class HomeController extends Controller
         $income_per_month = array_reverse($income_per_month);
         $expense_per_month = array_reverse($expense_per_month);
 
+        if(array_map(function ($item) {
+            return $item['amount'];
+        }, $income_per_month) == array_fill(0, count($income_per_month), 0)) {
+            $income_per_month = [];
+        }
+
+        if(array_map(function ($item) {
+            return $item['amount'];
+        }, $expense_per_month) == array_fill(0, count($expense_per_month), 0)) {
+            $expense_per_month = [];
+        }
+
         return view('home', compact('transactions', 'income', 'expense', 'balance', 'cash_balance', 'card_balance', 'income_info', 'expense_info', 'income_per_month', 'expense_per_month'));
     }
 }

@@ -125,7 +125,7 @@
 
     <div class="row">
         <div class="col-lg-6 col-12">
-            <div class="card" @if(!$expense_per_month and $income_per_month) style="height: 95%" @endif>
+            <div class="card" @if($expense_per_month and !$income_per_month) style="height: 95%" @endif>
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">Oylar bo'yicha kirimlar</h3>
@@ -142,7 +142,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-12">
-            <div class="card" @if(!$income_per_month and $expense_per_month) style="height: 95%" @endif>
+            <div class="card" @if($income_per_month and !$expense_per_month) style="height: 95%" @endif>
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">Oylar bo'yicha chiqimlar</h3>
