@@ -278,3 +278,10 @@
         });
     </script>
 @stop
+
+@section('footer')
+    <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.0
+    </div>
+    <strong>Powered by <a href="https://elbek.me">Elbek Khamdullaev</a>.</strong>
+@stop
