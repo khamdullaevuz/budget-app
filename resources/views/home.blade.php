@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-3 col-12">
-            <div class="small-box bg-gradient-primary">
+            <div class="small-box bg-gradient-navy">
                 <div class="inner">
                     <h3 class="counting">{{$transactions}}</h3>
                     <p>Tranzaksiyalar soni</p>
@@ -25,7 +25,7 @@
 
             <div class="small-box bg-gradient-success">
                 <div class="inner">
-                    <h3 class="counting">{{$income}}</h3>
+                    <h3 class="counting">{{Number::format($income)}}</h3>
                     <p>Kirimlar</p>
                 </div>
                 <div class="icon">
@@ -36,9 +36,9 @@
         </div>
         <div class="col-lg-3 col-12">
 
-            <div class="small-box bg-gradient-navy">
+            <div class="small-box bg-gradient-danger">
                 <div class="inner">
-                    <h3 class="counting">{{$expense}}</h3>
+                    <h3 class="counting">{{Number::format($expense)}}</h3>
                     <p>Chiqimlar</p>
                 </div>
                 <div class="icon">
@@ -50,9 +50,9 @@
 
         <div class="col-lg-3 col-12">
 
-            <div class="small-box bg-gradient-danger">
+            <div class="small-box bg-gradient-primary">
                 <div class="inner">
-                    <h3 class="counting">{{$balance}}</h3>
+                    <h3 class="counting">{{Number::format($balance)}}</h3>
                     <p>Balans</p>
                 </div>
                 <div class="icon">
