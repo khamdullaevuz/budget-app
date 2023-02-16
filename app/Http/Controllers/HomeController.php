@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::count();
+        $transactions = Transaction::whereMonth('created_at', date('m'))->count();
         $income = Transaction::whereMonth('created_at', date('m'))->where('type', 'income')->sum('amount');
         $expense = Transaction::whereMonth('created_at', date('m'))->where('type', 'expense')->sum('amount');
         $balance = Auth::user()->balance;
