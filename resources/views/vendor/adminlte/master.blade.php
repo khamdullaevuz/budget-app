@@ -115,7 +115,7 @@
         </script>
     @endif
 
-    @yield('js')
+    @yield('custom_js')
 
 </body>
 

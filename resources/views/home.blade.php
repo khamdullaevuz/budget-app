@@ -161,7 +161,7 @@
     </div>
 @stop
 
-@section('js')
+@section('custom_js')
     <script>
         $(function () {
             @if($income_info)
@@ -186,11 +186,11 @@
                 },
                 options: {
                     scales: {
-                        yAxes: [{
+                        yAxes: {
                             ticks: {
                                 beginAtZero: true
                             }
-                        }]
+                        }
                     }
                 }
             });
@@ -218,11 +218,11 @@
                 },
                 options: {
                     scales: {
-                        yAxes: [{
+                        yAxes: {
                             ticks: {
                                 beginAtZero: true
                             }
-                        }]
+                        }
                     }
                 }
             });
@@ -252,6 +252,13 @@
                     }]
                 },
                 options: {
+                    scales: {
+                        yAxes: {
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
                     plugins: {
                         legend: {
                             display: false
@@ -285,6 +292,13 @@
                     }]
                 },
                 options: {
+                    scales: {
+                        yAxes: {
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
                     plugins: {
                         legend: {
                             display: false
