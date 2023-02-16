@@ -52,6 +52,27 @@ class HomeController extends Controller
             return $item['amount'] > 0;
         });
 
-        return view('home', compact('transactions', 'income', 'expense', 'balance', 'cash_balance', 'card_balance', 'income_info', 'expense_info'));
+        // now is last month and select last 11 months income and expense and month with year
+
+        $income_per_month = [];
+        $expense_per_month = [];
+
+        for ($i = 0; $i < 12; $i++) {
+            $income_per_month[] = [
+                'month' => date('m', strtotime("-$i month")),
+                'year' => date('Y', strtotime("-$i month")),
+                'amount' => Transaction::whereMonth('created_at', date('m', strtotime("-$i month")))->where('type', 'income')->sum('amount')
+            ];
+            $expense_per_month[] = [
+                'month' => date('m', strtotime("-$i month")),
+                'year' => date('Y', strtotime("-$i month")),
+                'amount' => Transaction::whereMonth('created_at', date('m', strtotime("-$i month")))->where('type', 'expense')->sum('amount')
+            ];
+        }
+
+        $income_per_month = array_reverse($income_per_month);
+        $expense_per_month = array_reverse($expense_per_month);
+
+        return view('home', compact('transactions', 'income', 'expense', 'balance', 'cash_balance', 'card_balance', 'income_info', 'expense_info', 'income_per_month', 'expense_per_month'));
     }
 }

@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Number' => App\Helpers\Number::class,
+        'Month' => App\Helpers\Month::class,
     ],
 
 ];
