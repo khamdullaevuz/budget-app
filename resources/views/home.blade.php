@@ -134,14 +134,14 @@
                 data: {
                     labels: [
                         @foreach($income_info as $info)
-                            '{{$info->name}}',
+                            '{{$info['name']}}',
                         @endforeach
                     ],
                     datasets: [{
                         label: 'Kirimlar',
                         data: [
                             @foreach($income_info as $info)
-                                '{{$info->transactions_sum_amount}}',
+                                '{{$info['amount']}}',
                             @endforeach
                         ],
                         borderWidth: 1
@@ -166,14 +166,14 @@
                 data: {
                     labels: [
                         @foreach($expense_info as $info)
-                            '{{$info->name}}',
+                            '{{$info['name']}}',
                         @endforeach
                     ],
                     datasets: [{
                         label: 'Chiqimlar',
                         data: [
                             @foreach($expense_info as $info)
-                                '{{$info->transactions_sum_amount}}',
+                                '{{$info['amount']}}',
                             @endforeach
                         ],
                         borderWidth: 1

@@ -24,8 +24,33 @@ class HomeController extends Controller
         $cash_balance = Number::format(Auth::user()->cash_balance);
         $card_balance = Number::format(Auth::user()->card_balance);
 
-        $income_info = Category::where('type', 'income')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->having('transactions_sum_amount','!=', 0)->get('transactions_sum_amount');
-        $expense_info = Category::where('type', 'expense')->withSum('transactions', 'amount')->whereMonth('created_at', date('m'))->having('transactions_sum_amount','!=', 0)->get('transactions_sum_amount');
+        $categories_income = Category::where('type', 'income')->get();
+        $categories_expense = Category::where('type', 'expense')->get();
+
+        $income_info = [];
+        $expense_info = [];
+
+        foreach ($categories_income as $category) {
+            $income_info[] = [
+                'name' => $category->name,
+                'amount' => $category->transactions()->whereMonth('created_at', date('m'))->sum('amount')
+            ];
+        }
+
+        foreach ($categories_expense as $category) {
+            $expense_info[] = [
+                'name' => $category->name,
+                'amount' => $category->transactions()->whereMonth('created_at', date('m'))->sum('amount')
+            ];
+        }
+
+        $income_info = array_filter($income_info, function ($item) {
+            return $item['amount'] > 0;
+        });
+
+        $expense_info = array_filter($expense_info, function ($item) {
+            return $item['amount'] > 0;
+        });
 
         return view('home', compact('transactions', 'income', 'expense', 'balance', 'cash_balance', 'card_balance', 'income_info', 'expense_info'));
     }
