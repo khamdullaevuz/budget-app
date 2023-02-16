@@ -227,87 +227,72 @@
                 }
             });
             @endif
-        });
 
-        @if($income_per_month)
-        var income_per_month = document.getElementById('income_per_month').getContext('2d');
-        new Chart(income_per_month, {
-            type: 'bar',
-            data: {
-                labels: [
-                    @foreach($income_per_month as $info)
-                        '{{Month::getMonthName($info['month']) . ' ' . $info['year']}}',
-                    @endforeach
-                ],
-                datasets: [{
-                    label: 'Kirimlar',
-                    data: [
+            @if($income_per_month)
+            const income_per_month = document.getElementById('income_per_month').getContext('2d');
+            new Chart(income_per_month, {
+                type: 'bar',
+                data: {
+                    labels: [
                         @foreach($income_per_month as $info)
-                            '{{$info['amount']}}',
+                            '{{Month::getMonthName($info['month']) . ' ' . $info['year']}}',
                         @endforeach
                     ],
-                    backgroundColor: [
-                        "rgba(126,188,89,0.7)",
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
+                    datasets: [{
+                        label: 'Kirimlar',
+                        data: [
+                            @foreach($income_per_month as $info)
+                                '{{$info['amount']}}',
+                            @endforeach
+                        ],
+                        backgroundColor: [
+                            "rgba(126,188,89,0.7)",
+                        ],
+                        borderWidth: 1
                     }]
                 },
-                plugins: {
-                    legend: {
-                        display: false
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
                     }
                 }
-            }
-        });
-        @endif
+            });
+            @endif
 
-        @if($expense_per_month)
-        var expense_per_month = document.getElementById('expense_per_month').getContext('2d');
-        new Chart(expense_per_month, {
-            type: 'bar',
-            data: {
-                labels: [
-                    @foreach($expense_per_month as $info)
-                        '{{Month::getMonthName($info['month']) . ' ' . $info['year']}}',
-                    @endforeach
-                ],
-                datasets: [{
-                    label: 'Chiqimlar',
-                    data: [
+            @if($expense_per_month)
+            const expense_per_month = document.getElementById('expense_per_month').getContext('2d');
+            new Chart(expense_per_month, {
+                type: 'bar',
+                data: {
+                    labels: [
                         @foreach($expense_per_month as $info)
-                            '{{$info['amount']}}',
+                            '{{Month::getMonthName($info['month']) . ' ' . $info['year']}}',
                         @endforeach
                     ],
-                    backgroundColor: [
-                        "rgba(247,23,53,0.7)",
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
+                    datasets: [{
+                        label: 'Chiqimlar',
+                        data: [
+                            @foreach($expense_per_month as $info)
+                                '{{$info['amount']}}',
+                            @endforeach
+                        ],
+                        backgroundColor: [
+                            "rgba(247,23,53,0.7)",
+                        ],
+                        borderWidth: 1
                     }]
                 },
-                plugins: {
-                    legend: {
-                        display: false
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
                     }
                 }
-            }
+            });
+            @endif
         });
-        @endif
-
     </script>
 @stop
