@@ -183,15 +183,6 @@
                         ],
                         borderWidth: 1
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: {
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
                 }
             });
             @endif
@@ -215,15 +206,6 @@
                         ],
                         borderWidth: 1
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: {
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
                 }
             });
             @endif
@@ -252,13 +234,6 @@
                     }]
                 },
                 options: {
-                    scales: {
-                        yAxes: {
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }
-                    },
                     plugins: {
                         legend: {
                             display: false
@@ -292,13 +267,6 @@
                     }]
                 },
                 options: {
-                    scales: {
-                        yAxes: {
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }
-                    },
                     plugins: {
                         legend: {
                             display: false
