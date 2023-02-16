@@ -20,9 +20,9 @@ class HomeController extends Controller
         $transactions = Transaction::count();
         $income = Number::format(Transaction::whereMonth('created_at', date('m'))->where('type', 'income')->sum('amount'));
         $expense = Number::format(Transaction::whereMonth('created_at', date('m'))->where('type', 'expense')->sum('amount'));
-        $balance = Number::format(Auth::user()->balance);
-        $cash_balance = Number::format(Auth::user()->cash_balance);
-        $card_balance = Number::format(Auth::user()->card_balance);
+        $balance = Auth::user()->balance;
+        $cash_balance = Auth::user()->cash_balance;
+        $card_balance = Auth::user()->card_balance;
 
         $categories_income = Category::where('type', 'income')->get();
         $categories_expense = Category::where('type', 'expense')->get();

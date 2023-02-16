@@ -104,20 +104,20 @@
         <div class="col-lg-6 col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4><i class="fa fa-fw fa-dollar-sign"></i>Balans eslatmalari:</h4>
-                    <span class="badge badge-pill badge-success">{{Number::format(1000000)}}+</span> Yaxshi<br>
-                    <span class="badge badge-pill badge-warning">{{Number::format(500000)}}+</span> O'rta<br>
-                    <span class="badge badge-pill badge-danger">{{Number::format(500000)}}-</span> Yomon
+                    <h4><i class="fa fa-fw fa-dollar-sign"></i>Balanslar:</h4>
+                    <span><b>Jami</b>: </span><span class="badge badge-pill @if($balance >= 1000000) badge-success @elseif($balance >= 500000) badge-warning @else badge-danger @endif">{{Number::format($balance)}}</span><br>
+                    <span><b>Karta balansi</b>: </span><span class="badge badge-pill @if($card_balance >= 1000000) badge-success @elseif($card_balance >= 500000) badge-warning @else badge-danger @endif">{{Number::format($card_balance)}}</span><br>
+                    <span><b>Naqd balansi</b>: </span><span class="badge badge-pill @if($cash_balance >= 1000000) badge-success @elseif($cash_balance >= 500000) badge-warning @else badge-danger @endif">{{Number::format($cash_balance)}}</span>
                 </div>
             </div>
         </div>
         <div class="col-lg-6 col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4><i class="fa fa-fw fa-dollar-sign"></i>Balanslar:</h4>
-                    <span><b>Jami</b>: {{$balance}}</span><br>
-                    <span><b>Karta balansi</b>: {{$card_balance}}</span><br>
-                    <span><b>Naqd balansi</b>: {{$cash_balance}}</span>
+                    <h4><i class="fa fa-fw fa-dollar-sign"></i>Balans eslatmalari:</h4>
+                    <span class="badge badge-pill badge-success">{{Number::format(1000000)}}+</span> Yaxshi<br>
+                    <span class="badge badge-pill badge-warning">{{Number::format(500000)}}+</span> O'rta<br>
+                    <span class="badge badge-pill badge-danger">{{Number::format(500000)}}-</span> Yomon
                 </div>
             </div>
         </div>
