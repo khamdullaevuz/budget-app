@@ -65,6 +65,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <br>
                     {{ $transactions->appends(request()->input())->links() }}
                 </div>
             </div>

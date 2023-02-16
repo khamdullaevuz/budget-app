@@ -59,6 +59,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <br>
                     {{ $categories->appends(request()->input())->links() }}
                 </div>
             </div>
