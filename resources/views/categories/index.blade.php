@@ -60,7 +60,7 @@
                         </table>
                     </div>
                     <br>
-                    {{ $categories->appends(request()->input())->links() }}
+                    {{ $categories->appends(request()->input())->onEachSide(1)->links() }}
                 </div>
             </div>
         </div>

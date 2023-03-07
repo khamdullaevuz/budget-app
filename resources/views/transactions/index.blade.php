@@ -66,7 +66,7 @@
                         </table>
                     </div>
                     <br>
-                    {{ $transactions->appends(request()->input())->links() }}
+                    {{ $transactions->appends(request()->input())->onEachSide(1)->links() }}
                 </div>
             </div>
         </div>
