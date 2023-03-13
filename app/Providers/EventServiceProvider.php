@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Events\TransactionCreated;
 use App\Events\TransactionDeleted;
+use App\Events\TransferCreated;
 use App\Listeners\RefundAmount;
+use App\Listeners\TransferBalance;
 use App\Listeners\UpdateBalance;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TransactionDeleted::class => [
             RefundAmount::class
+        ],
+        TransferCreated::class => [
+            TransferBalance::class
         ]
     ];
 

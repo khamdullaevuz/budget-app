@@ -307,6 +307,12 @@ return [
             'icon' => 'fas fa-fw fa-exchange-alt',
             'active' => ['transactions/*'],
         ],
+        [
+            'text' => 'O\'tkazmalar',
+            'url'  => 'transfer',
+            'icon' => 'fas fa-fw fa-sync',
+            'active' => ['transfer/*'],
+        ],
         ['header' => 'Qo\'shimcha'],
         [
             'text'        => 'Bo\'limlar',

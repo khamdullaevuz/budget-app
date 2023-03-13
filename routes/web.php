@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -38,6 +39,11 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::get('category/{type}/type', [CategoryController::class, 'getCategoriesByType'])->name('category.type');
+
+    Route::controller(TransferController::class)->prefix('transfer')->as('transfer.')->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+    });
 
     /*Route::controller(ProfileController::class)->name('profile')->as('profile')->group(function(){
        Route::get('/', 'index');
