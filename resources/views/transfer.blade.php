@@ -14,8 +14,8 @@
                 <label for="type">Turi</label>
                 <select name="type" class="form-control" id="type" aria-describedby="typeHelp">
                     <option value="">Tanlang</option>
-                    <option value="income" {{old('type') == 'card2cash' ? 'selected' : ''}}>Kartadan naqdga</option>
-                    <option value="expense" {{old('type') == 'cash2card' ? 'selected' : ''}}>Naqddan kartaga</option>
+                    <option value="card2cash" {{old('type') == 'card2cash' ? 'selected' : ''}}>Kartadan naqdga</option>
+                    <option value="cash2card" {{old('type') == 'cash2card' ? 'selected' : ''}}>Naqddan kartaga</option>
                 </select>
                 @error('type')
                 <small id="typeHelp" class="form-text text-muted">{{$message}}</small>
