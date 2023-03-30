@@ -56,17 +56,28 @@ class HomeController extends Controller
 
         $income_per_month = [];
         $expense_per_month = [];
+        $current_month = now()->month;
+        $current_year = now()->year;
 
         for ($i = 0; $i < 12; $i++) {
+            $month = $current_month - $i;
+            if ($month <= 0) {
+                $month += 12;
+            }
+            $year = $current_year;
+            if ($month > $current_month) {
+                $year--;
+            }
+
             $income_per_month[] = [
-                'month' => date('m', strtotime("-$i month")),
-                'year' => date('Y', strtotime("-$i month")),
-                'amount' => Transaction::whereMonth('created_at', date('m', strtotime("-$i month")))->where('type', 'income')->sum('amount')
+                'month' => $month,
+                'year' => $year,
+                'amount' => Transaction::whereMonth('created_at', $month)->whereYear('created_at', $year)->where('type', 'income')->sum('amount')
             ];
-            $expense_per_month[] = [
-                'month' => date('m', strtotime("-$i month")),
-                'year' => date('Y', strtotime("-$i month")),
-                'amount' => Transaction::whereMonth('created_at', date('m', strtotime("-$i month")))->where('type', 'expense')->sum('amount')
+            $expense_per_month[] =  [
+                'month' => $month,
+                'year' => $year,
+                'amount' => Transaction::whereMonth('created_at', $month)->whereYear('created_at', $year)->where('type', 'expense')->sum('amount')
             ];
         }
 
