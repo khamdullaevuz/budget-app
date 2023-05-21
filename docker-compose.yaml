@@ -6,6 +6,7 @@ services:
       - "8127:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/var/www/html/public
     depends_on:
       - mysql
       - app
